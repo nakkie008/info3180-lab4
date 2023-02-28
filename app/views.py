@@ -85,11 +85,13 @@ def login():
 
 def get_uploaded_images():
     filenames = []
-    
+    extensions = ('.png', '.jpg')
     rootdir = os.getcwd()
-    for subdir, dirs, files in os.walk(rootdir + url_for('upload')): # app.config['UPLOAD_FOLDER']
+    
+    for subdir, dirs, files in os.walk(rootdir + app.config['UPLOAD_FOLDER']): 
         for file in files:
-            filenames.append(os.path.join(subdir, file))
+            if file.endswith(extensions):
+                filenames.append(file)
     
     return filenames
 
@@ -100,8 +102,9 @@ def get_image(filename):
 
 
 @app.route('/files')
+@login_required
 def files():
-    return render_template('files.html', filenames=get_uploaded_images())
+    return render_template('files.html', images=get_uploaded_images())
 
 
 # user_loader callback. This callback is used to reload the user object from

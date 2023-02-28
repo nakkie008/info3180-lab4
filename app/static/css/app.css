@@ -18,3 +18,23 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.uploaded-images-wrap {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.uploaded-image-wrap {
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploaded-image {
+    height: 200px;
+    width: auto;
+}

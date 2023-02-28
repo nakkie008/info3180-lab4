@@ -108,9 +108,9 @@ def files():
 
 
 @app.route('/logout')
-def logout(): 
-    session.pop('logged_in', None)
-    flash('You were logged out') 
+@login_required
+def logout():
+    logout_user()
     return redirect(url_for('home'))
 
 
